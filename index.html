@@ -1,0 +1,29 @@
+<p>This page generates random UUIDs using <code>crypto.randomUUID()</code> in your browser.</p>
+
+<button>Get 10 uuids</button>
+
+<p id="uuids" style="white-space: nowrap;"></p>
+
+<script>
+  const generate = () => {
+    document.querySelector('#uuids').textContent = [
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+      crypto.randomUUID(),
+    ].join('\n');
+  };
+
+  generate();
+
+  document.querySelector('button').onclick = (event) => {
+    event.preventDefault();
+    generate();
+  };
+</script>
