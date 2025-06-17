@@ -30,11 +30,13 @@
 
   generate(10);
 
-  document.querySelector('[data-generate]').onclick = (event) => {
-    event.preventDefault();
-    const amount = parseInt(event.target.getAttribute('data-generate'));
-    generate(amount);
-  };
+  Array.from(document.querySelector('[data-generate]')).forEach(button => {
+    button.onclick = (event) => {
+      event.preventDefault();
+      const amount = parseInt(event.target.getAttribute('data-generate'));
+      generate(amount);
+    };
+  });
 
   document.querySelector('.copy-all').onclick = (event) => {
     event.preventDefault();
