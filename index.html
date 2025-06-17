@@ -38,6 +38,6 @@
 
   document.querySelector('.copy-all').onclick = (event) => {
     event.preventDefault();
-    navigator.clipboard.write(document.querySelector('#uuids').textContent);
+    navigator.clipboard.writeText(document.querySelector('#uuids').textContent);
   };
 </script>
