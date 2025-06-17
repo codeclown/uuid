@@ -1,29 +1,43 @@
+<style>
+  body { padding: 24px; }
+</style>
+
 <p>This page generates random UUIDs using <code>crypto.randomUUID()</code> in your browser.</p>
 
-<button>Get 10 uuids</button>
+<p>
+  Generate…
+  <button data-generate="10">10 uuids</button>
+  <button data-generate="20">20 uuids</button>
+  <button data-generate="30">30 uuids</button>
+  <button data-generate="40">40 uuids</button>
+  <button data-generate="50">50 uuids</button>
+</p>
+
+<p>
+  <button className="copy-all">Copy all</button>
+</p>
 
 <p id="uuids" style="white-space: pre; font-family: monospace;"></p>
 
 <script>
-  const generate = () => {
-    document.querySelector('#uuids').textContent = [
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-      crypto.randomUUID(),
-    ].join('\n');
+  const generate = (amount) => {
+    const uuids = [];
+    for (let i = 0; i < amount; i++) {
+      uuids.push(crypto.randomUUID());
+    }
+    document.querySelector('#uuids').textContent = uuids.join('\n');
   };
 
-  generate();
+  generate(10);
 
-  document.querySelector('button').onclick = (event) => {
+  document.querySelector('[data-generate]').onclick = (event) => {
     event.preventDefault();
-    generate();
+    const amount = parseInt(event.target.getAttribute('data-generate'));
+    generate(amount);
+  };
+
+  document.querySelector('.copy-all').onclick = (event) => {
+    event.preventDefault();
+    navigator.clipboard.write(document.querySelector('#uuids').textContent);
   };
 </script>
