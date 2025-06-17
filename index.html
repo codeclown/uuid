@@ -30,7 +30,7 @@
 
   generate(10);
 
-  Array.from(document.querySelector('[data-generate]')).forEach(button => {
+  Array.from(document.querySelectorAll('[data-generate]')).forEach(button => {
     button.onclick = (event) => {
       event.preventDefault();
       const amount = parseInt(event.target.getAttribute('data-generate'));
